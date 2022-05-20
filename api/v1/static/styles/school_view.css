@@ -1,0 +1,109 @@
+/* School dropdown on left side */
+.sch_selector {
+    width: 65%;
+    margin-top: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* When you hover over selected school */
+.sch_selector:hover > .dropdown {
+    display: block;
+}
+
+/* School information */
+.cls_info {
+    width: 55%;
+    height: 60%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    color: grey;
+    background-color: white;
+}
+
+/* Delete and edit for school */
+.del_edit > .del_sch {
+    width: 100%;
+}
+.del_edit > .del_sch > p {
+    background-color: paleturquoise;
+    width: 80px;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    text-align: center;
+}
+.del_edit > .del_sch > p:hover {
+    color: grey;
+    cursor: pointer;
+}
+.del_edit > .edit_sch {
+    width: 100%;
+}
+.del_edit > .edit_sch > p {
+    background-color: paleturquoise;
+    width: 80px;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    text-align: center;
+}
+.del_edit > .edit_sch > p:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+/* School registration form */
+.sch_reg_form {
+    display: flex;
+    width: 50%;
+    height: 60%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    transition: all .4s ease-in-out;
+    color: grey;
+    background-color: white;
+}
+
+/* School/class information text */
+.cls_text {
+    margin-top: 10%;
+    width: 80%;
+}
+.cls_text > h5 {
+    margin-left: -20px;
+}
+.cls_text > h1 {
+    text-align: center;
+}
+.cls_text > h5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: start;
+}
+.cls_text > h5 > span {
+    margin-left: 50px;
+}
+
+/* Hide cards */
+.hide_cards {
+    display: none;
+}
+
+/* Show cards */
+.show_cards {
+    display: flex;
+}

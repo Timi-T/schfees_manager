@@ -1,0 +1,254 @@
+#register_student {
+    margin-top: 15px;
+    width: 150px;
+}
+
+/* Delete and edit for students */
+.del_edit > .del_obj {
+    width: 100%;
+}
+.del_edit > .del_obj > p {
+    background-color: paleturquoise;
+    width: 80px;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    text-align: center;
+}
+.del_edit > .del_obj > p:hover {
+    color: grey;
+    cursor: pointer;
+}
+.del_edit > .edit_obj {
+    width: 100%;
+}
+.del_edit > .edit_obj > p {
+    background-color: paleturquoise;
+    width: 80px;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    text-align: center;
+}
+.del_edit > .edit_obj > p:hover {
+    color: grey;
+    cursor: pointer;
+}
+.del_edit > .add_pay {
+    width: 100%;
+}
+.del_edit > .add_pay > p {
+    background-color: paleturquoise;
+    width: 120px;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    text-align: center;
+}
+.del_edit > .add_pay > p:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+/* Student registration form */
+.stu_reg_form {
+    width: 30%;
+    height: 500px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    transition: all .4s ease-in-out;
+    color: grey;
+    background-color: white;
+}
+
+/* Student selector */
+#stu_sel {
+    margin-top: 30px;
+    color: black;
+    width: 150px;
+}
+
+/* Class dropdown to register student */
+.stu_selector {
+    margin-top: 100px;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Register student class Dropdown */
+#stu_drop {
+    background-color: white;
+    display: none;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    white-space: nowrap;
+    overflow: scroll;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-height: 200px;
+}
+.stu_selector:hover > #stu_drop {
+    display: block;
+}
+#stu_drop > div {
+    width: 70%;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: scroll;
+    text-overflow: ellipsis;
+}
+
+#new_student {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+/* All students section */
+.students {
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+/* Mini student cards */
+.student {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 200px;
+    height: 80px;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    color: grey;
+}
+.student:hover {
+    color: black;
+}
+
+/* Register student button */
+#stu_reg_click {
+    margin-bottom: 100px;
+}
+
+/* Expand student view */
+.expand_view {
+    background-color: paleturquoise;
+    min-width: 450px;
+    height: auto;
+    max-height: auto;
+    border: 0.5px solid grey;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    color: grey;
+}
+
+/* Shrink student view */
+.shrink_view {
+    background-color: azure;
+    color: grey;
+    min-width: 200px;
+    height: 80px;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+/* student information */
+.stu_info {
+    width: 100%;
+    height: 100%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid grey;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    color: black;
+    background-color: white;
+    cursor: default;
+    margin-bottom: 10px;
+}
+
+/* Student information text */
+.stu_text {
+    margin-top: 10%;
+    width: 80%;
+}
+.stu_text > h5 {
+    margin-left: -20px;
+}
+.stu_text > h1 {
+    text-align: center;
+}
+.stu_text > h5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: start;
+}
+.stu_text > h5 > span {
+    margin-left: 50px;
+}
+
+/* Student Percentage bar */
+.stu_percent_bar {
+    background-color: rgb(219, 214, 214);
+    border: 0.5px solid grey;
+    border-radius: 20px;
+    width: 70%;
+    height: 10px;
+    margin-bottom: 10%;
+}
+
+/* Actual Student percentage */
+.stu_bar {
+    position: relative;
+    background-color: paleturquoise;
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+/* Hide cards */
+.hide_cards {
+    display: none;
+}
+
+/* Show cards */
+.show_cards {
+    display: flex;
+}
