@@ -10,23 +10,23 @@ branches of your school if you have more than one branch.</p>
 
 <h2>Built with</h2>
     <ul>
-        <li>-   Python -> Primary Language for logic implememntation.</li>
-        <li>-   Python Flask -> As the backend framework.</li>
-        <li>-   Javascript/HTML/CSS -> Frontend rendering and dynamic contents.</li>
-        <li>-   MySQL -> Database storage.</li>
-        <li>-   SQLAlchemy -> ORM for data storage.</li>
-        <li>-   Git -> Version control.</li>
+        <li>Python -> Primary Language for logic implememntation.</li>
+        <li>Python Flask -> As the backend framework.</li>
+        <li>Javascript/HTML/CSS -> Frontend rendering and dynamic contents.</li>
+        <li>MySQL -> Database storage.</li>
+        <li>SQLAlchemy -> ORM for data storage.</li>
+        <li>Git -> Version control.</li>
     </ul>
 
 <h2>Getting started</h2>
     <h3>Dependencies</h3>
         <ul>
-            <li>- Python 3.9.10 -> [$ sudo apt-get install python3] (for Linux os)</li>
-            <li>- flask -> [$ pip install flask]</li>
-            <li>- flask_login -> [$ pip install flask-login]</li>
-            <li>- MySQL</li>
-            <li>- SQLAlchemy -> [$ pip install flask-sqlalchemy]</li>
-            <li>- bcrypt -> [$ pip install bcrypt]</li>
+            <li>Python 3.9.10 -> [$ sudo apt-get install python3] (for Linux os)</li>
+            <li>flask -> [$ pip install flask]</li>
+            <li>flask_login -> [$ pip install flask-login]</li>
+            <li>MySQL</li>
+            <li>SQLAlchemy -> [$ pip install flask-sqlalchemy]</li>
+            <li>bcrypt -> [$ pip install bcrypt]</li>
         </ul>
     <h3>Installing</h3>
         <p>Simply fork this repository to your local machine</p>
@@ -37,16 +37,16 @@ branches of your school if you have more than one branch.</p>
     grant all privileges to this user on that database.
     Now to run the command, the following environmanetal variabes should be set;</p>
     <ul>
-        <li>- FEES_MAN_USER -> This should be set to the database user</li>
-        <li>- FEES_MAN_PASSWORD -> This should be set to the password associated with 
+        <li>FEES_MAN_USER -> This should be set to the database user</li>
+        <li>FEES_MAN_PASSWORD -> This should be set to the password associated with 
           the database user</li>
-        <li>- FEES_MAN_HOST -> This should be set to Localhost if your database is 
+        <li>FEES_MAN_HOST -> This should be set to Localhost if your database is 
           hosted on your local machine. Else specify the ip address for your database.</li>
-        <li>- FEES_MAN_DBNAME -> This should be set to the name for the database you created 
+        <li>FEES_MAN_DBNAME -> This should be set to the name for the database you created 
           earlier</li>
-        <li>- FEES_SECRET_KEY -> Set this secret key to whatever you like but be sure to keep it
+        <li>FEES_SECRET_KEY -> Set this secret key to whatever you like but be sure to keep it
           consistent.</li>
-        <li>- FLASK_APP -> Set this to "api/v1/app"</li>
+        <li>FLASK_APP -> Set this to "api/v1/app"</li>
     <p>Finally you can run the command "flask run" in your terminal. Be sure to run it from the 
     projects root directory.</p>
     <p>Example:</p>
@@ -57,5 +57,5 @@ branches of your school if you have more than one branch.</p>
     This would take you to a signup page which would create an account for you to have a user experience.
     Next you login and you can now create a school, class or student.</p>
     <p>To create a school, click on the "Register school" button at the top left of the school.</p> 
-    <p><img src="screenshots/home.png" width="350"></p>
+    <p><img src="screenshots/home.png" width="700" height="500"></p>
     <p>This step is required to create a classroom or a student.</p>
