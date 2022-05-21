@@ -15,6 +15,7 @@ import sqlalchemy
 from models.base_model import Base_model, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+from flask import render_template
 from flask_login import UserMixin
 from api.v1.app import login_manager
 
@@ -23,7 +24,7 @@ from api.v1.app import login_manager
 def load_user(user_id):
     from models import storage
     """Function to load a user for login session"""
-    
+
     user_dict = storage.get('User', user_id)
     for k, user in user_dict.items():
         return user

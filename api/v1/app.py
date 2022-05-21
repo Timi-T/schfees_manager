@@ -16,7 +16,7 @@ app.secret_key = os.getenv('FEES_SECRET_KEY')
 app.register_blueprint(app_views)
 app.register_blueprint(auth)
 login_manager = LoginManager()
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'auth.log_in'
 login_manager.init_app(app)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
