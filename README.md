@@ -62,7 +62,7 @@ branches of your school if you have more than one branch.</p>
     <p>This step is required to create a classroom or a student.</p>
     <p>To register a student, a class has to be created to place the student in so create a class and 
     you can now register a student</p>
-    <p><img scr="screenshots/reg_stu.png" width="700" height="400"></p>
+    <p><img src="screenshots/reg_stu.png" width="700" height="400"></p>
     <p>To register a student, click on "students" at the bottom of the page and click register student</p>
-    <p><img scr="screenshots/students.png" width="700" height="400"></p>
-    <p><img scr="screenshots/student_view.png" width="700" height="400"></p>
+    <p><img src="screenshots/students.png" width="700" height="400"></p>
+    <p><img src="screenshots/student_view.png" width="700" height="400"></p>
