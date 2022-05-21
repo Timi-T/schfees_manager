@@ -1,4 +1,4 @@
-School Fees Manager
+<h1>School Fees Manager<h1>
 
 <h2>Description</h2>
 <p>This is a project that looks to solve the problem of fees management for school Administrators.
@@ -56,10 +56,13 @@ branches of your school if you have more than one branch.</p>
     <p>Now that you have your server running, go to your browser and type "http://127.0.0.1:5000/signup".
     This would take you to a signup page which would create an account for you to have a user experience.
     Next you login and you can now create a school, class or student.</p>
-    <p>To create a school, click on the "Register school" button at the top left of the school.</p> 
+    <p>To create a school, click on the "Register school" button at the top left of the school.
+    An admin password is required for every create, edit and delete operation.</p> 
     <p><img src="screenshots/home.png" width="700" height="400"></p>
     <p>This step is required to create a classroom or a student.</p>
     <p>To register a student, a class has to be created to place the student in so create a class and 
-    you can register a student</p>
+    you can now register a student</p>
     <p><img scr="screenshots/reg_stu.png" width="700" height="400"></p>
     <p>To register a student, click on "students" at the bottom of the page and click register student</p>
+    <p><img scr="screenshots/students.png" width="700" height="400"></p>
+    <p><img scr="screenshots/student_view.png" width="700" height="400"></p>
