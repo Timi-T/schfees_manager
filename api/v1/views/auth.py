@@ -17,6 +17,12 @@ bcrypt = Bcrypt()
 
 auth = Blueprint('auth', __name__, url_prefix='/')
 
+@auth.route('/feesmanager', methods=['GET'], strict_slashes=False)
+def landing():
+    """Landing page"""
+
+    return render_template('landing.html')
+
 @auth.route('/feesmanager/home', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
 def home():

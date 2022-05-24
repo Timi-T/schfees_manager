@@ -15,6 +15,7 @@ branches of your school if you have more than one branch.</p>
         <li>Javascript/HTML/CSS -> Frontend rendering and dynamic contents.</li>
         <li>MySQL -> Database storage.</li>
         <li>SQLAlchemy -> ORM for data storage.</li>
+        <li>bcrypt -> password hashing</li>
         <li>Git -> Version control.</li>
     </ul>
 
