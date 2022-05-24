@@ -31,7 +31,7 @@ $(document).ready(function () {
         post_dict['password'] = pwd
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/students',
+            url: '/api/v1/schools/' + sch_id + '/students',
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',
@@ -110,7 +110,7 @@ $(document).ready(function () {
         post_dict['parent_phone'] = (stu_edit_form.elements['parent_phone']).value;
         $.ajax({
             type: 'PUT',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/students/' + stu_id,
+            url: '/api/v1/schools/' + sch_id + '/students/' + stu_id,
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',
@@ -156,7 +156,7 @@ $(document).ready(function () {
         post_dict['password'] = (stu_pay_form.elements['password']).value;
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/students/' + stu_id + '/fees',
+            url: '/api/v1/schools/' + sch_id + '/students/' + stu_id + '/fees',
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',
@@ -202,7 +202,7 @@ $(document).ready(function () {
         post_dict['password'] = (stu_del_form.elements['password']).value;
         $.ajax({
             type: 'DELETE',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/students/' + stu_id,
+            url: '/api/v1/schools/' + sch_id + '/students/' + stu_id,
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',

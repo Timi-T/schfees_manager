@@ -17,7 +17,7 @@ bcrypt = Bcrypt()
 
 auth = Blueprint('auth', __name__, url_prefix='/')
 
-@auth.route('/home', methods=['GET', 'POST'], strict_slashes=False)
+@auth.route('/feesmanager/home', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
 def home():
     """Return user to home page"""
@@ -91,7 +91,7 @@ def sign_up():
                 return render_template('sign_up.html')
     return render_template('sign_up.html')
 
-@auth.route('/logout', strict_slashes=False)
+@auth.route('/feesmanager/logout', strict_slashes=False)
 @login_required
 def logout():
     """Function to logout a user"""

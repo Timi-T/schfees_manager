@@ -12,7 +12,7 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-app.secret_key = os.getenv('FEES_SECRET_KEY')
+app.secret_key = os.getenv('FEES_MAN_SECRET_KEY')
 app.register_blueprint(app_views)
 app.register_blueprint(auth)
 login_manager = LoginManager()
@@ -39,4 +39,4 @@ def not_found(error):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000', debug=True)
+    app.run(host='0.0.0.0', port='5005', debug=True)

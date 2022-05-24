@@ -12,7 +12,7 @@ $(document).ready(function () {
         sch_id = $('.selected_school').attr('id')
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/classrooms/' + cls_id,
+            url: '/api/v1/schools/' + sch_id + '/classrooms/' + cls_id,
             dataType: 'json',
             success: function (data) {
                 for (let key in data) {
@@ -82,7 +82,7 @@ $(document).ready(function () {
         post_dict['sch_id'] = sch_id
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/classrooms',
+            url: '/api/v1/schools/' + sch_id + '/classrooms',
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',
@@ -126,7 +126,7 @@ $(document).ready(function () {
         post_dict['password'] = (cls_del_form.elements['password']).value;
         $.ajax({
             type: 'DELETE',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/classrooms/' + cls_id,
+            url: '/api/v1/schools/' + sch_id + '/classrooms/' + cls_id,
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',
@@ -162,7 +162,7 @@ $(document).ready(function () {
         post_dict['class_teacher'] = (cls_edit_form.elements['class_teacher']).value;
         $.ajax({
             type: 'PUT',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/classrooms/' + cls_id,
+            url: '/api/v1/schools/' + sch_id + '/classrooms/' + cls_id,
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',

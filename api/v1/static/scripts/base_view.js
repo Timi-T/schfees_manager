@@ -8,7 +8,7 @@ $(document).ready(function() {
     /* Load all the percentages once the page loads */
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5000/api/v1/schools/' + first_sch + '/classrooms',
+        url: '/api/v1/schools/' + first_sch + '/classrooms',
         dataType: 'json',
         success: function (data) {
             current_classes = data 
@@ -16,7 +16,7 @@ $(document).ready(function() {
     });
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5000/api/v1/schools/' + first_sch + '/students',
+        url: '/api/v1/schools/' + first_sch + '/students',
         dataType: 'json',
         success: function (data) {
             for (const [key, stu] of Object.entries(data)) {
@@ -36,7 +36,7 @@ $(document).ready(function() {
     });
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5000/api/v1/users/' + user + '/schools/' + first_sch,
+        url: '/api/v1/users/' + user + '/schools/' + first_sch,
         dataType: 'json',
         success: function (data) {
             for (let key in data) {

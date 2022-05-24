@@ -14,7 +14,7 @@ $(document).ready(function () {
         $('#' + id + ' > div').html('<h4 class=selected_school id=' + sch_id + '>' + new_text + '</h4>');
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:5000/api/v1/users/' + user + '/schools/' + sch_id,
+            url: '/api/v1/users/' + user + '/schools/' + sch_id,
             dataType: 'json',
             success: function (data_obj) {
                 for (let k in data_obj) {
@@ -58,7 +58,7 @@ $(document).ready(function () {
         });
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/classrooms',
+            url: '/api/v1/schools/' + sch_id + '/classrooms',
             dataType: 'json',
             success: function (data) {
                 $('#cls_drop').html('');
@@ -70,7 +70,7 @@ $(document).ready(function () {
                     if (data['code']) {
                         break;
                     }
-                    link = 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/classrooms/' + (data[key]).id,
+                    link = '/api/v1/schools/' + sch_id + '/classrooms/' + (data[key]).id,
                     txt_stu += '<div><p class=cl_item id=' + (data[key]).id + '>' + (data[key]).name + '</p></div>'
                     txt_cls += '<div><p class=cl_item id=' + (data[key]).id + '>' + (data[key]).name + '</p></div>'
                 }
@@ -88,7 +88,7 @@ $(document).ready(function () {
         });
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:5000/api/v1/schools/' + sch_id + '/students',
+            url: '/api/v1/schools/' + sch_id + '/students',
             dataType: 'json',
             success: function (data) {
                 $('.students').html('')
@@ -177,11 +177,12 @@ $(document).ready(function () {
         post_dict['password'] = pwd
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api/v1/users/' + user_id + '/schools',
+            url: '/api/v1/users/' + user_id + '/schools',
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
+		console.log("Success!")
                 if (data['code'] === 'School created') {
                     alert("School created!")
                     sch_reg_form.reset();
@@ -203,6 +204,7 @@ $(document).ready(function () {
                     $('#sch_form_pop').css('background-color', 'lightcoral')
                     $('#sch_form_pop').toggleClass('hide_cards show_cards');
                 }
+		console.log(data)
             }
         });
     });
@@ -225,7 +227,7 @@ $(document).ready(function () {
         post_dict['password'] = (sch_del_form.elements['password']).value;
         $.ajax({
             type: 'DELETE',
-            url: 'http://127.0.0.1:5000/api/v1/users/' + user + '/schools/' + sch_id,
+            url: '/api/v1/users/' + user + '/schools/' + sch_id,
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',
@@ -267,7 +269,7 @@ $(document).ready(function () {
         post_dict['level'] = (sch_edit_form.elements['level']).value;
         $.ajax({
             type: 'PUT',
-            url: 'http://127.0.0.1:5000/api/v1/users/' + user + '/schools/' + sch_id,
+            url: '/api/v1/users/' + user + '/schools/' + sch_id,
             data: JSON.stringify(post_dict),
             dataType: 'json',
             contentType: 'application/json',
