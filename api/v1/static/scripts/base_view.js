@@ -41,8 +41,11 @@ $(document).ready(function() {
         success: function (data) {
             for (let key in data) {
                 sch_percent = (data[key]).sch_percent
-                $('.cls_bar').css('width', sch_percent + '%')
-                $('.cls_text > h1').html(sch_percent + '%')
+		$('.cls_text > h1').html(sch_percent + '%')
+		if (parseInt(sch_percent) > 100) {
+		    sch_percent = '100'
+		}
+		$('.cls_bar').css('width', sch_percent + '%')
             }
         }
     });

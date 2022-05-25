@@ -47,7 +47,7 @@ header {
     border: 1px solid grey;
     border-radius: 20px;
     width: 25%;
-    height: 60%;
+    height: 400px;
     align-items: center;
     justify-content: top;
 }
@@ -150,6 +150,7 @@ header {
 #forgot_pwd {
     cursor: pointer;
     font-size: small;
+    margin-bottom: 50px;
 }
 
 /* Left header */

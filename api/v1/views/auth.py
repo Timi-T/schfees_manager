@@ -91,7 +91,7 @@ def sign_up():
             save_user = storage.save()
             if save_user is True:
                 flash('Sign up successful!', category='success')
-                return redirect(url_for('auth.log_in'))
+                return redirect('/feesmanager/login')
             else:
                 flash('Error creating account', category='error')
                 return render_template('sign_up.html')
