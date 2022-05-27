@@ -335,3 +335,13 @@ a:hover {
  .credits  > a {
      color: black;
  }
+
+ .demo {
+     display: flex;
+     align-items: center;
+     margin-left: 100px;
+     width: 500px;
+     height: 350px;
+     margin-top: 50px;
+     margin-bottom: 50px;
+ }
