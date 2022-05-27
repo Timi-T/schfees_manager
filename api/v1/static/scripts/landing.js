@@ -6,7 +6,7 @@ features.addEventListener("click", function () {
     scrollToSmoothly(750, 800);
 });
 about.addEventListener("click", function () {
-    scrollToSmoothly(3800, 1500);
+    scrollToSmoothly(4000, 1500);
 });
 back_to_top[0].addEventListener("click", function () {
     scrollToSmoothly(0, 0);
