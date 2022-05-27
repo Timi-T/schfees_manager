@@ -104,4 +104,4 @@ def logout():
 
     logout_user()
     flash('Logged out successful!', category='success')
-    return render_template('login.html')
+    return redirect('/feesmanager/login')
