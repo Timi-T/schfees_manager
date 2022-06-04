@@ -35,6 +35,7 @@
     background-color: white;
 }
 
+/* When the information section is hovered over */
 .cls_info:hover {
     transform: translateY(-10px);
     border-left: 1px solid paleturquoise;
@@ -42,7 +43,7 @@
     color: black;
 }
 
-/* School information text */
+/* School or class information text */
 .cls_text {
     margin-top: 10%;
     width: 80%;
@@ -81,7 +82,7 @@
     border-radius: 20px;
 }
 
-/* Class dropdown on right side */
+/* Class dropdown on right section of page */
 .cls_selector {
     width: 65%;
     margin-top: 30%;

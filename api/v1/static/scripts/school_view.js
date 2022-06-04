@@ -1,25 +1,37 @@
+// Take action when the document loads
 $(document).ready(function () {
+    // Retrieving the user id from the html document
     user = $('body > p').attr('id')
+
+    // Retriveing all classrooms from html document
     var all_classes = $('.students > div');
     classes = Object.assign([], all_classes)
+
+    // Retriving id of the school that loads up first
     first_sch = $('.selected_school').attr('id')
-    let current_classes;
 
 
-    /* When a school is selected from the dropdowm */
+    /* Action to be taken when a school is selected from 
+    the dropdowm */
     $('#sch_drop > div > p').on('click', function(event) {
+        // Change the name for the current school
         let new_text = $(this).text()
         let id = $(this).parent().parent().siblings().attr('id');
         sch_id = $(this).attr('id');
         $('#' + id + ' > div').html('<h4 class=selected_school id=' + sch_id + '>' + new_text + '</h4>');
+
+        // API call to get information about the selected school
         $.ajax({
             type: 'GET',
             url: '/api/v1/users/' + user + '/schools/' + sch_id,
             dataType: 'json',
             success: function (data_obj) {
                 for (let k in data_obj) {
+                    // Unpacking the data
                     data = data_obj[k]
                 }
+
+                // Change the content of the information display
                 sch_text = "<h5>School name: <span>" + data.name + "</span></h5>";
                 sch_text += "<h5>School address: <span>" + data.address + "<span></span></h5>";
                 sch_text += "<h5 class=current_sch id=" + data.id + ">School ID: <span>" + data.id + "</span></h5>";
@@ -33,6 +45,8 @@ $(document).ready(function () {
                 $('body > header > .cls_name').html('')
                 $('body > header > .cls_name').html(data.name)
                 $('body > .cls_addr > p').html(data.address)
+
+                // Change the content of the delete and edit options
                 $('.del_edit').html('')
                 new_txt = ''
                 new_txt += '<div class="del_sch">'
@@ -56,6 +70,8 @@ $(document).ready(function () {
                 $('.del_edit').html(new_txt)
             }
         });
+
+        // API call to get the classrooms in the selected school
         $.ajax({
             type: 'GET',
             url: '/api/v1/schools/' + sch_id + '/classrooms',
@@ -68,6 +84,7 @@ $(document).ready(function () {
                 sch_id = $('.current_sch').attr('id')
                 for (let key in data) {
                     if (data['code']) {
+                        // If data returns an error
                         break;
                     }
                     link = '/api/v1/schools/' + sch_id + '/classrooms/' + (data[key]).id,
@@ -86,6 +103,8 @@ $(document).ready(function () {
                 }
             }
         });
+
+        // API call to get students in the selected school
         $.ajax({
             type: 'GET',
             url: '/api/v1/schools/' + sch_id + '/students',
@@ -93,10 +112,11 @@ $(document).ready(function () {
             success: function (data) {
                 $('.students').html('')
                 if (data['code']) {
+                    // If there are no students
                     return
                 }
                 txt = ''
-                console.log(data)
+                // Customize entire page to display selected school
                 for (const [key, stu] of Object.entries(data)) {
                     txt += '<div class="student_class" id=' + stu.cls_id
                     txt += '><div class=hide_cards><i class="fas fa-caret-down close_view hide_cards"></i></div>'
@@ -157,11 +177,13 @@ $(document).ready(function () {
     });
 
 
-    /* When register school button is clicked */
+    // Action to be taken when register school button is clicked
     $('#register_school').on('click', function(event) {
+        // Show school registration form
         $('.sch_reg_form').toggleClass('hide_cards show_cards');
     });
-    /* When a new school is registered */
+
+    // Action to be take when a new school is registered
     const sch_reg_form  = document.getElementById('new_school');
     sch_reg_form.addEventListener('submit', (event) => {
         event.preventDefault()
@@ -175,6 +197,7 @@ $(document).ready(function () {
         post_dict['address'] = address
         post_dict['level'] = level
         post_dict['password'] = pwd
+        // API call to get schools associated with current user
         $.ajax({
             type: 'POST',
             url: '/api/v1/users/' + user_id + '/schools',
@@ -182,49 +205,53 @@ $(document).ready(function () {
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
-		console.log("Success!")
                 if (data['code'] === 'School created') {
+                    // Operation success
                     alert("School created!")
                     sch_reg_form.reset();
                     $('.sch_reg_form').toggleClass('hide_cards show_cards');
                     setTimeout("location.reload(true);",1500);
                 }
                 else if (data['code'] === 'School exists') {
+                    // If school exists
                     $('.message').html('<p>School with that name exists already!</p>');
                     $('#sch_form_pop').css('background-color', 'lightcoral')
                     $('#sch_form_pop').toggleClass('hide_cards show_cards');
                 }
                 else if (data['code'] === 'Wrong password') {
+                    // If provided password is wrong
                     $('.message').html('<p>Wrong password!</p>');
                     $('#sch_form_pop').css('background-color', 'lightcoral')
                     $('#sch_form_pop').toggleClass('hide_cards show_cards');
                 }
                 else {
-                    $('.message').html('<p>Unknown error</p>');
+                    // Other errors
+                    $('.message').html('<p>Error</p>');
                     $('#sch_form_pop').css('background-color', 'lightcoral')
                     $('#sch_form_pop').toggleClass('hide_cards show_cards');
                 }
-		console.log(data)
             }
         });
     });
 
 
-    /* When delete under school/class is clicked */
+    /* When delete button under school or class is clicked */
     $('body').on('click', '.del_sch > p', function() {
         id = $(this).siblings('form').attr('id')
-        console.log(id)
+        // Show the delete form
         $('.signup_input_group#' + id).toggleClass('hide_cards show_cards')
     })
-    /* When delete school button is clicked */
+
+    /* Action to be taken when delete school button is clicked */
     $('body').on('click', '.submit_btn#del_sch', function(event) {
         event.preventDefault()
         id = $(this).parent().attr('id')
         sch_id = (id.split('delete'))[0]
         const sch_del_form  = document.getElementById(sch_id + 'delete');
-        console.log(sch_id)
         let post_dict = {}
         post_dict['password'] = (sch_del_form.elements['password']).value;
+
+        // API call to delete current school
         $.ajax({
             type: 'DELETE',
             url: '/api/v1/users/' + user + '/schools/' + sch_id,
@@ -233,40 +260,43 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (data) {
                 if (data['code'] === 'Deleted') {
+                    // Operation success
                     alert("School has been deleted successfully")
                     sch_del_form.reset();
                     $('.sch_del_form').toggleClass('hide_cards show_cards');
                     setTimeout("location.reload(true);",1500);
                 }
                 else if (data['code'] === 'Wrong password') {
+                    // If provided password is wrong
                     $('.message').html('<p>Wrong password!</p>');
                     $('#sch_del_pop').css('background-color', 'lightcoral');
                     $('#sch_del_pop').toggleClass('hide_cards show_cards');
                 }
-                console.log(data['code'])
             }
         });
     });
 
 
-    /* When edit under school/class is clicked */
+    /* When edit under school or class is clicked */
     $('body').on('click', '.edit_sch > p', function() {
         id = $(this).siblings('form').attr('id')
-        console.log(id)
+        // Show school edit form
         $('.signup_input_group#' + id).toggleClass('hide_cards show_cards')
     })
-    /* When edit school button is clicked */
+
+    // Action to take when edit school button is clicked
     $('body').on('click', '.submit_btn#edit_sch', function(event) {
         event.preventDefault()
         id = $(this).parent().attr('id')
         sch_id = (id.split('edit'))[0]
         const sch_edit_form  = document.getElementById(sch_id + 'edit');
-        console.log(sch_id)
         let post_dict = {}
         post_dict['password'] = (sch_edit_form.elements['password']).value;
         post_dict['name'] = (sch_edit_form.elements['name']).value
         post_dict['address'] = (sch_edit_form.elements['address']).value;
         post_dict['level'] = (sch_edit_form.elements['level']).value;
+
+        // API call to edit the selected school
         $.ajax({
             type: 'PUT',
             url: '/api/v1/users/' + user + '/schools/' + sch_id,
@@ -275,17 +305,18 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (data) {
                 if (data['code'] === 'Updated') {
+                    // Operation success
                     alert("School has been updated successfully")
                     sch_edit_form.reset();
                     $('.sch_edit_form').toggleClass('hide_cards show_cards');
                     setTimeout("location.reload(true);",1500);
                 }
                 else if (data['code'] === 'Wrong password') {
+                    // If provide password is wrong
                     $('.message').html('<p>Wrong password!</p>');
                     $('#sch_del_pop').css('background-color', 'lightcoral')
                     $('#sch_del_pop').toggleClass('hide_cards show_cards');
                 }
-                console.log(data['code'])
             }
         });
     });

@@ -21,6 +21,7 @@ class School(Base_model, Base):
     Class to define the School model
     """
 
+    """Defining the databse table"""
     __tablename__ = 'schools'
     name = Column(String(128), nullable=False)
     address = Column(String(256), nullable=False)
@@ -34,6 +35,7 @@ class School(Base_model, Base):
 
     def __init__(self, name, address, **kwargs):
         """constructor method for each class"""
+ 
         super().__init__(**kwargs)
         self.name = name
         self.address = address

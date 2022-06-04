@@ -31,6 +31,7 @@ class DBstorage():
         host = os.getenv('FEES_MAN_HOST')
         db_name = os.getenv('FEES_MAN_DBNAME')
         st = 'mysql+mysqldb://{}:{}@{}/{}'.format(user, pwd, host, db_name)
+        """Creating database engine"""
         self.__engine = create_engine(st, pool_pre_ping=True)
 
         if os.getenv('FEES_MAN_ENV') == "test":
@@ -39,6 +40,7 @@ class DBstorage():
     def reload(self):
         """Load objects from database"""
 
+        """Initiallizing database session"""
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
@@ -59,11 +61,12 @@ class DBstorage():
             return False
 
     def all(self, cls=None):
-        """Return all objects in the database"""
+        """Return all objects in the database given a classname"""
 
         all_objs = {}
         new_dict = {}
         if cls is None:
+            """When no classname is provided"""
             for cls_name, cls_obj in classes.items():
                 new_objs = self.__session.query(cls_obj).all()
                 for obj in new_objs:
@@ -105,7 +108,9 @@ class DBstorage():
             new_dict = {}
             objs = self.__session.query(classes[cls]).all()
             for obj in objs:
+                """Iterating through every object"""
                 for k, v in attr.items():
+                    """Checking for the required attribute in the object"""
                     if getattr(obj, k) == v:
                         key = obj.__class__.__name__ + '.' + obj.id
                         new_dict[key] = obj

@@ -1,4 +1,4 @@
-/* School dropdown on left side */
+/* School dropdown on left section of page */
 .sch_selector {
     width: 65%;
     margin-top: 30%;
@@ -98,12 +98,12 @@
     margin-left: 50px;
 }
 
-/* Hide cards */
+/* Hide a section of page */
 .hide_cards {
     display: none;
 }
 
-/* Show cards */
+/* Show a section of page */
 .show_cards {
     display: flex;
 }

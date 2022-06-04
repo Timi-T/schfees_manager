@@ -75,4 +75,3 @@ class Base_model():
             for k, v in kwargs.items():
                 setattr(self, k, v)
             setattr(self, 'date_updated', datetime.utcnow())
-            #storage.new(self)

@@ -1,13 +1,17 @@
 <h1>School Fees Manager<h1>
 
-<h2>Description</h2>
+<h2>Introduction</h2>
 <p>This is a project that looks to solve the problem of fees management for school Administrators.
  It helps to monitor the payment progress of each child in the school. Now this is great 
 because from the comfort from your home or office you can easily track payment progress 
 and have accurate data of cash inflow into the school account. Also you get to manage different
 branches of your school if you have more than one branch.</p>
 <p>You get to create Add a new school, class and student from your dashboard.</p>
-
+<p><a href="https://roadsidedev.tech/feesmanager">Deployed application</a></p>
+<p><a href="https://medium.com/@ogunbodetimi/fees-manager-b002c00cfd26">Project blog post</a></p>
+<h4>Developer</h4>
+  <p>Ogunbode Opeyemi</p>
+  <p><a href="www.linkedin.com/in/opeyemi-ogunbode-33441814a">LinkedIn</a></p>
 <h2>Built with</h2>
     <ul>
         <li>Python -> Primary Language for logic implememntation.</li>
@@ -67,3 +71,15 @@ branches of your school if you have more than one branch.</p>
     <p>To register a student, click on "students" at the bottom of the page and click register student</p>
     <p><img src="screenshots/students.png" width="700" height="400"></p>
     <p><img src="screenshots/student_view.png" width="700" height="400"></p>
+    <p>As seen here, different actions can be taken by the administrator under the student view. You can delete or edit student information and most importantly, you can log a payment for a student.</p>
+<h2>Contribution</h2>
+  <h5>The "fork-and-pull" Git workflow should be followed for any contributions.</h5>
+    <ul>
+      <li>Fork this repository on GitHub</li>
+      <li>Clone the project to your local machine</li>
+      <li>Commit changes made to your own separate branch</li>
+      <li>Push your changes back to your fork</li>
+      <li>Make a Pull request so your changes can be reviewed</li>
+    </ul>
+    <p>Always merge the latest from "upstream" before making any pull request! to maintain consistency</p>
+<h2>Licencing</h2>

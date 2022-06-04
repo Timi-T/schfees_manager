@@ -1,12 +1,21 @@
+// Take action when the document loads
 $(document).ready(function () {
+    // Retrieving the user id from the html document
     user = $('body > p').attr('id')
+
+    // Retriveing all classrooms from html document
     var all_classes = $('.students > div');
     classes = Object.assign([], all_classes)
+
+    // Retriving id of the school that loads up first
     first_sch = $('.selected_school').attr('id')
-    let current_classes;
 
+    // Action to be taken when 'register student' button is clicked
+    $('#register_student').on('click', function() {
+        $('.stu_reg_form').toggleClass('hide_cards show_cards')
+    });
 
-    /* When a new student is created */
+    // Action to be taken when a new student is to be created
     const stu_reg_form  = document.getElementById('new_student');
     stu_reg_form.addEventListener('submit', (event) => {
         event.preventDefault()
@@ -15,12 +24,9 @@ $(document).ready(function () {
         const sex = (stu_reg_form.elements['sex']).value;
         const parent_phone = (stu_reg_form.elements['parent_phone']).value
         const pwd = (stu_reg_form.elements['password']).value;
-        
         const sch_id = $('.selected_school').attr('id')
         const cls = $('#stu_sel > div > h4').text()
         const cls_id = $('#stu_sel > div > h4').attr('id')
-        console.log(cls)
-        console.log(cls_id)
         let post_dict = {}
         post_dict['name'] = name
         post_dict['age'] = age
@@ -29,6 +35,8 @@ $(document).ready(function () {
         post_dict['cls_id'] = cls_id
         post_dict['cls'] = cls
         post_dict['password'] = pwd
+
+        // API call to add a student to the database
         $.ajax({
             type: 'POST',
             url: '/api/v1/schools/' + sch_id + '/students',
@@ -37,33 +45,36 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (data) {
                 if (data['code'] === 'Created') {
+                    // Operation success
                     alert("Student added!")
                     stu_reg_form.reset()
                     $('.stu_reg_form').toggleClass('hide_cards show_cards')
                     setTimeout("location.reload(true);", 1500);
                 }
                 else if (data['code'] === 'Student exists') {
+                    // If student exists
                     $('.message').html('<p>Student with that name exists already!</p>');
                     $('#stu_form_pop').css('background-color', 'lightcoral')
                     $('#stu_form_pop').toggleClass('hide_cards show_cards');
                 }
                 else if (data['code'] === 'Wrong password') {
+                    // If provided password is wrong
                     $('.message').html('<p>Wrong password!</p>');
                     $('#stu_form_pop').css('background-color', 'lightcoral')
                     $('#stu_form_pop').toggleClass('hide_cards show_cards');
                 }
                 else {
-                    $('.message').html('<p>Unknown error</p>');
+                    // Any other error
+                    $('.message').html('<p>Error</p>');
                     $('#stu_form_pop').css('background-color', 'lightcoral')
                     $('#stu_form_pop').toggleClass('hide_cards show_cards');
                 }
-                console.log(data['code'])
             }
         });
     });
 
 
-    /* Get a student view */
+    // When a student card is clicked to get complete view
     $('body').on('click', '.student', function(event) {
         $(this).removeClass('shrink_view')
         $(this).addClass('expand_view')
@@ -75,7 +86,7 @@ $(document).ready(function () {
     })
 
 
-    /* Close student view */
+    // When 'close icon' is clicked to minimize student view
     $('body').on('click', '.close_view', function() {
         id = $(this).parent().siblings().attr('id')
         $('.student#' + id + ' > .stu_info').removeClass('show_cards')
@@ -87,27 +98,27 @@ $(document).ready(function () {
     })
 
 
-    /* When edit under student is clicked */
+    // Action to be taken when 'edit' under student is clicked
     $('body').on('click', '.edit_obj > p', function() {
         id = $(this).siblings('form').attr('id')
-        console.log(id)
         $('.signup_input_group#' + id).toggleClass('hide_cards show_cards')
     })
-    /* When edit student button is clicked */
+
+    // Action to be taken when 'edit student' button is clicked
     $('body').on('click', '.submit_btn#edit_stu', function(event) {
         event.preventDefault()
         id = $(this).parent().attr('id')
         stu_id = (id.split('edit'))[0]
         const stu_edit_form  = document.getElementById(stu_id + 'edit');
         sch_id = $('.selected_school').attr('id')
-        console.log(stu_id)
-        console.log(sch_id)
         let post_dict = {}
         post_dict['password'] = (stu_edit_form.elements['password']).value;
         post_dict['name'] = (stu_edit_form.elements['name']).value;
         post_dict['age'] = (stu_edit_form.elements['age']).value;
         post_dict['sex'] = (stu_edit_form.elements['sex']).value;
         post_dict['parent_phone'] = (stu_edit_form.elements['parent_phone']).value;
+
+        // API call to update student
         $.ajax({
             type: 'PUT',
             url: '/api/v1/schools/' + sch_id + '/students/' + stu_id,
@@ -116,44 +127,44 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (data) {
                 if (data['code'] === 'Updated') {
+                    // Operation success
                     alert("Student has been updated successfully")
                     stu_edit_form.reset();
                     $('.stu_edit_form').toggleClass('hide_cards show_cards');
                     setTimeout("location.reload(true);",1500);
                 }
                 else if (data['code'] === 'Wrong password') {
+                    // If provided password is wrong
                     $('.message').html('<p>Wrong password!</p>');
                     $('#stu_del_pop').css('background-color', 'lightcoral')
                     $('#stu_del_pop').toggleClass('hide_cards show_cards');
                 }
-                console.log(data['code'])
             }
         });
     });
 
 
-    /* When pay under student is clicked */
+    // When 'make payment' under student is clicked
     $('body').on('click', '.add_pay > p', function() {
         id = $(this).siblings('form').attr('id')
-        console.log(id)
         $('.signup_input_group#' + id).toggleClass('hide_cards show_cards')
-        //$('#delete_student').toggleClass('hide_cards show_cards')
     })
-    /* When make payment is clicked is clicked */
+
+    // When 'make payment' is clicked to submit payment form
     $('body').on('click', '.submit_btn#add_pay', function(event) {
         event.preventDefault()
         id = $(this).parent().attr('id')
         stu_id = (id.split('pay'))[0]
         const stu_pay_form  = document.getElementById(stu_id + 'pay');
         sch_id = $('.selected_school').attr('id')
-        console.log(stu_id)
-        console.log(sch_id)
         let post_dict = {}
         post_dict['payer_name'] = (stu_pay_form.elements['payer_name']).value;
         post_dict['amount'] = (stu_pay_form.elements['amount']).value;
         post_dict['purpose'] = (stu_pay_form.elements['purpose']).value;
         post_dict['student_id'] = stu_id;
         post_dict['password'] = (stu_pay_form.elements['password']).value;
+
+        // API call to create a payment
         $.ajax({
             type: 'POST',
             url: '/api/v1/schools/' + sch_id + '/students/' + stu_id + '/fees',
@@ -162,44 +173,46 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (data) {
                 if (data['code'] === 'Success') {
+                    // Operation success
                     alert("Payment successful")
                     stu_pay_form.reset();
                     $('.stu_pay_form').toggleClass('hide_cards show_cards');
                     setTimeout("location.reload(true);",1500);
                 }
                 else if (data['code'] === 'Wrong password') {
+                    // If a provided password is wrong
                     $('.message').html('<p>Wrong password!</p>');
                     $('#stu_del_pop').css('background-color', 'lightcoral')
                     $('#stu_del_pop').toggleClass('hide_cards show_cards');
                 }
                 else if (data['code'] === 'Invalid credentials') {
-                    $('.message').html('<p>Wrong password!</p>');
+                    // If Credentials are invalid
+                    $('.message').html('<p>Invalid data!</p>');
                     $('#stu_del_pop').css('background-color', 'lightcoral')
                     $('#stu_del_pop').toggleClass('hide_cards show_cards');
                 }
-                console.log(data['code'])
             }
         });
     });
 
 
-    /* When delete under student is clicked */
+    // Action to take when 'delete' under student is clicked
     $('body').on('click', '.del_obj > p', function() {
         id = $(this).siblings('form').attr('id')
-        console.log(id)
         $('.signup_input_group#' + id).toggleClass('hide_cards show_cards')
     })
-    /* When delete student button is clicked */
+
+    // Action to be taken when 'delete student' button is clicked
     $('body').on('click', '.submit_btn#del_stu', function(event) {
         event.preventDefault()
         id = $(this).parent().attr('id')
         stu_id = (id.split('delete'))[0]
         const stu_del_form  = document.getElementById(stu_id + 'delete');
         sch_id = $('.selected_school').attr('id')
-        console.log(stu_id)
-        console.log(sch_id)
         let post_dict = {}
         post_dict['password'] = (stu_del_form.elements['password']).value;
+
+        // API call to delete student
         $.ajax({
             type: 'DELETE',
             url: '/api/v1/schools/' + sch_id + '/students/' + stu_id,
@@ -208,36 +221,31 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (data) {
                 if (data['code'] === 'Deleted') {
+                    // Operation success
                     alert("Student has been deleted successfully")
                     stu_del_form.reset();
                     $('.stu_del_form').toggleClass('hide_cards show_cards');
                     setTimeout("location.reload(true);",1500);
                 }
                 else if (data['code'] === 'Wrong password') {
+                    // If provided password is wrong
                     $('.message').html('<p>Wrong password!</p>');
                     $('#stu_del_pop').css('background-color', 'lightcoral')
                     $('#stu_del_pop').toggleClass('hide_cards show_cards');
                 }
-                console.log(data['code'])
             }
         });
     });
 
 
-    /* Register a student */
-    $('#register_student').on('click', function() {
-        $('.stu_reg_form').toggleClass('hide_cards show_cards')
-    });
-
-
-    /* When the students view is expanded */
+    // When 'students' text is clicked on
     $('.lower_text > h5').on('click', function(event) {
         $('.students').toggleClass('hide_cards show_cards');
         $('#register_student').toggleClass('hide_cards show_cards');
     });
 
 
-    /* When a classroom is selected from the dropdown to register student*/
+    // When a classroom is selected from the dropdown to register student
     $('body').on('click', '#stu_drop > div > p', function(event) {
         let new_text = $(this).text();
         let id = $(this).parent().parent().siblings().attr('id');

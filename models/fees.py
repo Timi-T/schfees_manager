@@ -20,6 +20,7 @@ class Fees(Base_model, Base):
     Class to define the Payment model
     """
 
+    """Defining the databse table"""
     __tablename__ = 'fees'
     payer_name = Column(String(64), nullable=False)
     student_id = Column(String(64), ForeignKey('students.id'), nullable=False)
@@ -28,4 +29,5 @@ class Fees(Base_model, Base):
 
     def __init__(self, **kwargs):
         """constructor method for each payment"""
+
         super().__init__(**kwargs)

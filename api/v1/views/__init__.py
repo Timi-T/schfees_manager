@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 create blueprint for the flask app
-and import all the views when this folder is initiated
+and import all the views when this module is initiated
 """
 
 from flask import Blueprint

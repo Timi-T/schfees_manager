@@ -18,6 +18,7 @@ def get_schools(user_id):
     if not user:
         return "No such user"
     for k, usr in user.items():
+        """Unpacking the 'user' dictionary"""
         schools = usr.schools
     new_dict = {}
     for sch in schools:
@@ -33,6 +34,7 @@ def get_school(user_id, sch_id):
     if not user:
         return "No such user"
     for k, usr in user.items():
+        """Unpacking the 'user' dictionary"""
         schools = usr.schools
     sch_fees_expected = 0
     sch_fees_paid = 0
@@ -76,6 +78,7 @@ def create_school(user_id):
     if not check_user:
         return jsonify({"code": 'Wrong password'})
     for k, usr in user.items():
+        """Unpacking the 'user' dictionary"""
         user_schools = usr.schools
     for sch in user_schools:
         if sch.name == sch_info['name']:
@@ -110,6 +113,7 @@ def update_sch(user_id, sch_id):
     if not school:
         return jsonify({"code": "Invalid school id"})
     for k, sch in school.items():
+        """Unpacking the 'school' dictionary"""
         if sch.id == sch_id:
             sch.update(**update_dict)
             save_sch = storage.save()

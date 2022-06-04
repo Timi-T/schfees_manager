@@ -20,6 +20,7 @@ def get_student_payments(sch_id, stu_id):
     student = storage.get('Student', stu_id)
     if student:
         for k, stu in student.items():
+            """Unpacking the 'student' dictionary"""
             if stu.sch_id == sch_id:
                 fees = stu.fees
                 for fee in fees:
@@ -40,6 +41,7 @@ def get_class_payment(sch_id, cls_id):
     if not classroom:
         return "Invalid classroom id"
     for k, cls in classroom.items():
+        """Unpacking the 'classroom' dictionary"""
         if cls.sch_id == sch_id:
                 students = cls.students
                 for student in students:
@@ -59,6 +61,7 @@ def get_sch_payment(sch_id):
         return "Invalid school id"
     new_dict = {}
     for k, sch in school.items():
+        """Unpacking the 'school' dictionary"""
         classes = sch.classes
         for cls in classes:
             students = cls.students
@@ -101,6 +104,7 @@ def create_student_payment(sch_id, stu_id):
     save_fee = storage.save()
     if save_fee is True:
         for k, stu in student.items():
+            """Unpacking the 'student' dictionary"""
             current_fee = stu.fees_paid
             new = current_fee + amount
             stu.update(**{"fees_paid": new})
@@ -108,11 +112,13 @@ def create_student_payment(sch_id, stu_id):
             cls_id = stu.cls_id
         student_class = storage.get('Classroom', cls_id)
         for k, cls in student_class.items():
+            """Unpacking the 'student_class' dictionary"""
             current_cls_fee = cls.fees_paid
             new_cls_fee = amount + current_cls_fee
             cls.update(**{"fees_paid": new_cls_fee})
             storage.save()
         for k, sch in school.items():
+            """Unpacking the 'school' dictionary"""
             current_sch_fee = sch.fees_paid
             new_sch_fee = current_sch_fee + amount
             sch.update(**{"fees_paid": new_sch_fee})
@@ -143,6 +149,7 @@ def update_student_payment(sch_id, stu_id, fee_id):
     if not fee:
         return "Invalid fee id"
     for k, f in fee.items():
+        """Unpacking the 'fee' dictionary"""
         f.update(**fee_info)
         storage.new(f)
         save_update = storage.save()
@@ -165,6 +172,7 @@ def delete_student_payment(sch_id, stu_id, fee_id):
     if not fee:
         return "Invalid fee id"
     for k, f in fee.items():
+        """Unpacking the 'fee' dictionary"""
         storage.delete(f)
         save_update = storage.save()
         if save_update is True:

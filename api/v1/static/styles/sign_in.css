@@ -4,6 +4,7 @@ body {
     margin: 0;
     color: black;
 }
+
 /* The whole page as a container */
 .container {
     padding: 0px;
@@ -28,7 +29,7 @@ header {
     color: gray;
 }
 
-/* Left side of the page */
+/* Left section of the page */
 .left_container {
     position: relative;
     display: flex;
@@ -38,7 +39,7 @@ header {
     width: 60%;
 }
 
-/* Right side of the page */
+/* Right section of the page */
 .right_container {
     display: flex;
     flex-direction: column;
@@ -51,12 +52,14 @@ header {
     align-items: center;
     justify-content: top;
 }
+
+/* Height of sign in section */
 .sign_con {
     height: 70%;
 }
 
 
-/* Header for login section */
+/* Title for login section */
 .login_header {
     position: relative;
     text-align: center;
@@ -99,7 +102,7 @@ header {
     transition: 0.5 ease-in-out;
 }
 
-/* Other button that isnt active */
+/* Inactive button */
 .other {
     padding: 10px 20px;
     cursor: pointer;
@@ -110,15 +113,6 @@ header {
     outline: none;
     font-size: medium;
     transition: 0.5 ease-in-out;
-}
-
-/* The other button that isn't active 
-.toggle_btn {
-    border: 0.3px solid grey;
-    background-color: paleturquoise;
-    border-radius: 20px;
-    height: 100%;
-    transition: 0.2s ease-in-out;
 }
 
 /* Input Fields (email & password) */
@@ -153,7 +147,7 @@ header {
     margin-bottom: 50px;
 }
 
-/* Left header */
+/* Title on left side of body */
 #left_header {
     margin-top: -70px;
     border-bottom: 0.5px solid grey;
@@ -161,7 +155,7 @@ header {
     text-align: center;
 }
 
-/* Body of left container */
+/* content of left side of page */
 .left_con_body {
     padding: 20px 100px;
     font-size: large;
@@ -170,15 +164,7 @@ header {
     color: gray;
 }
 
-/* Small texts 
-.small_text {
-    font-size: 1.5rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-bottom: 30px;
-    color: black;
-}
-
-/* signup forms */
+/* signup form */
 .signup_input_group {
     transition: 0.5 ease-in-out;
     display: flex;
@@ -186,6 +172,10 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%;
+}
+.signup_input_group > a {
+    width: 80%;
+    color: grey;
 }
 
 /* login form */
@@ -197,22 +187,12 @@ header {
     justify-content: center;
     width: 100%;
 }
-
-/* Sign up button upon loading page 
-#signup_click {
-    display: none;
-}*/
-
 .login_input_group > a {
     width: 80%;
     color: grey;
 }
 
-.signup_input_group > a {
-    width: 80%;
-    color: grey;
-}
-
+/* Error pop-up */
 .alert-danger {
     background-color: lightpink;
     border-radius: 10px;
@@ -225,6 +205,7 @@ header {
     padding: 10px;
 }
 
+/* Success pop-up */
 .alert-success {
     background-color: paleturquoise;
     border-radius: 10px;

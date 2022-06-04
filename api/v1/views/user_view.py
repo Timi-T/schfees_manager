@@ -20,6 +20,7 @@ def all_users():
     new_dict = {}
     all_users = storage.all('User')
     for k, v in all_users.items():
+        """Unpacking the 'all_users' dictionary"""
         key = (k.split('.', 1))[1]
         new_dict[key] = v.to_dict()
     return new_dict
@@ -34,6 +35,7 @@ def get_user(user_id):
     if not user:
         return "Invalid user id"
     for k, v in user.items():
+        """Unpacking the 'user' dictionary"""
         key = (k.split('.', 1))[1]
         new_dict[key] = v.to_dict()
     return new_dict
@@ -52,6 +54,7 @@ def register_user():
         except Exception:
             return "Wrong data format"
         user_pwd = user_info.get('password')
+        """Hash user password before storing in the database"""
         hash_pwd = bcrypt.generate_password_hash(user_pwd).decode('utf-8')
         user_info['password'] = hash_pwd
         new_user = User(**user_info)
@@ -77,6 +80,7 @@ def update_user(user_id):
         if not user:
             return "Invalid user id"
         for k, v, in user.items():
+            """Unpacking the 'user' dictionary"""
             v.update(**user_info)
             storage.new(v)
             save_user = storage.save()
@@ -95,6 +99,7 @@ def delete_user(user_id):
     if not user:
         return "Invalid user id"
     for k, v in user.items():
+        """Unpacking the 'user' dictionary"""
         storage.delete(v)
         storage.save()
     return "User Deleted!"

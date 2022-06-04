@@ -25,6 +25,7 @@ class Student(Base_model, Base):
 
     __stu_id = 1010
 
+    """Defining the databse table"""
     __tablename__ = 'students'
     stu_id = Column(String(64), nullable=False)
     name = Column(String(64), nullable=False, unique=True)
@@ -39,6 +40,7 @@ class Student(Base_model, Base):
 
     def __init__(self, **kwargs):
         """constructor method for each student"""
+
         super().__init__(**kwargs)
         self.stu_id = str(Student.__stu_id)
         self.fees_paid = 0

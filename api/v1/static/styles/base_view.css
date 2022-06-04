@@ -22,6 +22,7 @@ header {
     height: 10%;
 }
 
+/* Logout button */
 header > .logout {
     color: black;
     display: flex;
@@ -58,7 +59,7 @@ header > h1 {
     align-items: center;
 }
 
-/* Error popup */
+/* Pop-up messages */
 .message {
     color: black;
     height: 100%;
@@ -68,7 +69,7 @@ header > h1 {
     align-items: center;
 }
 
-/* cancel popup */
+/* Cancel pop-up button */
 .cancel_popup {
     padding-right: 50px;
 }
@@ -76,7 +77,7 @@ header > h1 {
     cursor: pointer;
 }
 
-/* Search student input */
+/* Search student input container */
 .search {
     margin-top: 30px;
 }
@@ -91,16 +92,18 @@ header > h1 {
     border: 0.5px solid grey;
 }
 
+/* Address for the displayed school */
 .cls_addr {
     text-align: center;
 }
 
-/* Page as a whole */
+/* Div container that holds all page contents */
 .container {
     display: flex;
     flex-direction: column;
 }
-/* Page be low header */
+
+/* Top section of page be low header */
 .upper_page {
     display: flex;
     background-color: azure;
@@ -118,7 +121,7 @@ header > h1 {
     height: 100%;
 }
 
-/* Current item selected */
+/* Current item (school/class) selected */
 .selector {
     display: flex;
     flex-direction: row;
@@ -166,7 +169,7 @@ header > h1 {
     transform: translateY(3px);
 }
 
-/* Dropdown */
+/* Dropdown for schools and classrooms */
 .dropdown {
     background-color: white;
     display: none;
@@ -195,7 +198,7 @@ header > h1 {
     transition: all .2s ease-in-out;
 }
 
-/* Middle part of container */
+/* Middle section of container */
 .middle_container {
     width: 60%;
     height: 100%;
@@ -215,7 +218,7 @@ header > h1 {
     margin-left: 30px;
 }
 
-/* Input Fields */
+/* Input fields in forms */
 .input_fields {
     padding: 10px 0;
     margin: 5px 0;
@@ -240,7 +243,7 @@ header > h1 {
     font-size: medium;
 }
 
-/* All forms */
+/* All forms styling */
 .signup_input_group {
     margin-top: 50px;
     margin-bottom: 25px;
@@ -252,7 +255,7 @@ header > h1 {
     width: 100%;
 }
 
-/* Right side of container */
+/* Right section of container */
 .right_container {
     display: flex;
     flex-direction: column;
@@ -262,7 +265,7 @@ header > h1 {
     height: 100%;
 }
 
-/* Lower part of page */
+/* Lower section of page */
 .lower_page {
     display: flex;
     flex-direction: column;
@@ -271,7 +274,7 @@ header > h1 {
     margin-bottom: 10%;
 }
 
-/* Text just below the card */
+/* 'students' text below card */
 .lower_text {
     text-align: center;
     border-bottom: 0.5px solid grey;
@@ -285,18 +288,18 @@ header > h1 {
     color: grey;
 }
 
-/* Close a view */
+/* Close student view when hovered */
 .close_view:hover {
     cursor: pointer;
     color: grey;
 }
 
-/* Hide cards */
+/* Hide a section of page */
 .hide_cards {
     display: none;
 }
 
-/* Show cards */
+/* Show a section of the page */
 .show_cards {
     display: flex;
 }
@@ -306,7 +309,7 @@ header > h1 {
     color: red;
 }
 
-/* options */
+/* options in each view */
 .options > h5 > i:hover {
     cursor: pointer;
     color: grey;

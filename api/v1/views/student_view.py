@@ -23,6 +23,7 @@ def get_students(sch_id):
         for stu in students:
             student_class = storage.get('Classroom', stu.cls_id)
             for k, stu_cls in student_class.items():
+                """Unpacking the 'student_class' dictionary"""
                 fees_expected = stu_cls.fees_expected
             fees_percent = stu.fees_paid / fees_expected
             stu_dict = stu.to_dict()
@@ -43,9 +44,11 @@ def get_student(sch_id, stu_id):
     student = storage.get('Student', stu_id)
     if student:
         for k, stu in student.items():
+            """Unpacking the 'student' dictionary"""
             if stu.sch_id == sch_id:
                 student_class = storage.get('Classroom', stu.cls_id)
                 for k, stu_cls in student_class.items():
+                    """Unpacking the 'student_class' dictionary"""
                     fees_expected = stu_cls.fees_expected
                 fees_percent = stu.fees_paid / fees_expected
                 stu_dict = stu.to_dict()
@@ -83,6 +86,7 @@ def create_student(sch_id):
     if not cls:
         return jsonify({"code": "Invalid class id"})
     for k, sch in school.items():
+        """Unpacking the 'school' dictionary"""
         students = sch.students
     for stu in students:
         if stu.name == stu_info['name']:
@@ -91,10 +95,12 @@ def create_student(sch_id):
     save_stu = storage.save()
     if save_stu is True:
         for k, v in school.items():
+            """Increment number of students in school"""
             stu_count = v.no_of_students
             v.update(**{"no_of_students": stu_count + 1})
             storage.save()
         for k2, v2 in cls.items():
+            """increment number of students in classroom"""
             stu_count = v2.no_of_students
             v2.update(**{"no_of_students": stu_count + 1})
             storage.save()
@@ -131,6 +137,7 @@ def update_student(sch_id, stu_id):
     if not student:
         return jsonify({"code": "Invalid student id"})
     for k, stu in student.items():
+        """Unpacking the 'student' dictionary"""
         if stu.id == stu_id and stu.sch_id == sch_id:
             stu.update(**update_dict)
             save_stu = storage.save()
@@ -157,17 +164,20 @@ def delete_student(sch_id, stu_id):
     if not student:
         return "Invalid student id"
     for k, stu in student.items():
+        """Unpacking the 'student' dictionary"""
         if stu.id == stu_id and stu.sch_id == sch_id:
             storage.delete(stu)
             save_stu = storage.save()
             if save_stu is True:
                 for k, sch in school.items():
+                    """Unpacking the 'school' dictionary"""
                     no_of_sch_students = sch.no_of_students
                     new_number = no_of_sch_students - 1
                     sch.update(**{'no_of_students': new_number})
                     storage.save()
                 cls = storage.get('Classroom', stu.cls_id)
                 for k, v in cls.items():
+                    """Unpacking the 'cls' dictionary"""
                     current = v.no_of_students
                     new = current - 1
                     v.update(**{'no_of_students': new})

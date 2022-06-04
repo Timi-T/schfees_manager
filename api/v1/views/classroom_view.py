@@ -41,6 +41,7 @@ def get_classroom(sch_id, cls_id):
     new_dict = {}
     if classes:
         for cls in classes:
+            """Unpacking the 'classes' dictionary"""
             if cls.id == cls_id:
                 cls_fees_expected += cls.fees_expected * cls.no_of_students
                 cls_fees_paid += cls.fees_paid
@@ -56,6 +57,7 @@ def get_classroom(sch_id, cls_id):
 @app_views.route('/schools/<sch_id>/classrooms', methods=['POST'], strict_slashes=False)
 def create_class(sch_id):
     """Function to create a classroom in a school"""
+
     from models import storage
     from models.classrooms import Classroom
 
@@ -75,6 +77,7 @@ def create_class(sch_id):
     if not school:
         return jsonify({"code": "Invalid school id"})
     for k, sch in school.items():
+        """Unpacking the 'school' dictionary"""
         classes = sch.classes
     for cls in classes:
         if cls.name == class_info['name']:
@@ -83,6 +86,7 @@ def create_class(sch_id):
     save_cls = storage.save()
     if save_cls is True:
         for k, v in school.items():
+            """Unpacking the school dictionary"""
             cur = v.no_of_classes
             v.update(**{"no_of_classes": cur + 1})
             storage.save()
@@ -112,14 +116,18 @@ def update_classroom(sch_id, cls_id):
     if not school:
         return jsonify({"code": "Invalid school id"})
     for k, v in school.items():
+        """Unpacking the school dictionary"""
         classes = v.classes
         for cls in classes:
+            """Iterating through the classes list"""
             if cls.name.replace(' ', '') == (update_dict['name']).replace(' ', ''):
+                """If the updated name is already taken"""
                 if cls.id != cls_id:
                     return jsonify({"code": "Class exists"})
     classroom = storage.get('Classroom', cls_id)
     if classroom:
         for k, cls in classroom.items():
+            """Unpacking the classroom dictionary"""
             if cls.sch_id == sch_id:
                 cls.update(**update_dict)
                 save_cls = storage.save()
@@ -146,12 +154,14 @@ def delete_classroom(sch_id, cls_id):
     for k, sch in school.items():
         classes = sch.classes
     for cls in classes:
+        """Unpacking the classes dictionary"""
         if cls.id == cls_id:
             storage.delete(cls)
             save_cls = storage.save()
             if save_cls is True:
                 school = storage.get('School', sch_id)
                 for k, sch in school.items():
+                    """Unpacking the 'school' dictionary"""
                     no_of_classes = sch.no_of_classes
                     sch.update(**{"no_of_classes": no_of_classes - 1})
                     storage.save()

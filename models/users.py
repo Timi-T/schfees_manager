@@ -34,6 +34,7 @@ class User(Base_model, Base, UserMixin):
     Class to define the User model
     """
 
+    """Defining the databse table"""
     __tablename__ = 'users'
     email = Column(String(64), nullable=False, unique=True)
     password = Column(String(64), nullable=False)
@@ -43,4 +44,5 @@ class User(Base_model, Base, UserMixin):
 
     def __init__(self, **kwargs):
         """constructor method for each user/admin"""
+
         super().__init__(**kwargs)

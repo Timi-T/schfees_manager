@@ -20,6 +20,7 @@ class Classroom(Base_model, Base):
     Class to define the Classroom model
     """
 
+    """Defining the databse table"""
     __tablename__ = 'classrooms'
     name = Column(String(64), nullable=False)
     sch_id = Column(String(64), ForeignKey('schools.id'), nullable=False)
@@ -32,6 +33,7 @@ class Classroom(Base_model, Base):
 
     def __init__(self, **kwargs):
         """constructor method for each class"""
+
         super().__init__(**kwargs)
         self.no_of_students = 0
         self.fees_paid = 0
