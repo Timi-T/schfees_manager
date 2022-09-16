@@ -30,7 +30,8 @@ class DBstorage():
         pwd = os.getenv('FEES_MAN_PASSWORD')
         host = os.getenv('FEES_MAN_HOST')
         db_name = os.getenv('FEES_MAN_DBNAME')
-        st = 'mysql+mysqldb://{}:{}@{}/{}'.format(user, pwd, host, db_name)
+        #st = 'mysql+mysqldb://{}:{}@{}/{}'.format(user, pwd, host, db_name)
+        st = host
         """Creating database engine"""
         self.__engine = create_engine(st, pool_pre_ping=True)
 
