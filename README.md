@@ -57,7 +57,7 @@ branches of your school if you have more than one branch.</p>
     <p>Finally you can run the command "flask run" in your terminal. Be sure to run it from the 
     projects root directory.</p>
     <p>Example:</p>
-        <p>FEES_MAN_USER=myuser FEES_MAN_PASSWORD=mypwd FEES_MAN_HOST=localhost FEES_MAN_DBNAME=mydb FEES_SECRET_KEY=mysecretkey FLASK_APP=api/v1/app flask run</p>
+        <p>FEES_MAN_USER=myuser FEES_MAN_PASSWORD=mypwd FEES_MAN_HOST=localhost FEES_MAN_DBNAME=mydb FEES_MAN_SECRET_KEY=mysecretkey FLASK_APP=api/v1/app flask run</p>
     
 <h2>Usage</h2>
     <p>Now that you have your server running, go to your browser and type "http://127.0.0.1:5000/signup".
